@@ -1,8 +1,8 @@
 ## 目录链接
 
-1. [智能指针](http://google.com)
+1. [智能指针](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/SmartPointer.md)
 
 
-[链接到Markdown！]（https://guides.github.com/features/mastering-markdown/）
+[Markdown语法]（https://guides.github.com/features/mastering-markdown）
 
-[链接到githubHelp！]（https://help.github.com/categories/writing-on-github/）
+[githubHelp]（https://help.github.com/categories/writing-on-github）
