@@ -196,3 +196,6 @@ public:
 
 };
 ```
+
+**transfer函数的实现流程参考下图**
+![Image of listtransfer](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/listtransfer.png)
