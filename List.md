@@ -193,6 +193,13 @@ public:
         (*last.node).prev = (*first.node).prev;
         (*first.node).prev = temp;
     }
+    
+    //list中splice,reverse,sort,merge函数都是依赖transfer函数来实现的
+    //splice 在list1某一个位置插入list2
+    //reverse 将list倒序排列
+    //sort 将list进行排序
+    
+    
 
 };
 ```
