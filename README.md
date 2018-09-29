@@ -8,7 +8,8 @@
 6. [cpp模板偏特化](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/cpp%E6%A8%A1%E6%9D%BF%E5%81%8F%E7%89%B9%E5%8C%96.md)
 7. [Vector实现](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/Vector.md)
 8. [List实现](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/List.md)
-9. [基本算法](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95.md)
+9. [deque](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/deque.md)
+10. [基本算法](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95.md)
 
 ## Github学习
 1. [Markdown语法](https://guides.github.com/features/mastering-markdown)
