@@ -14,6 +14,74 @@
 ![Image of deque](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/deque.JPG)
   
 # 3.deque迭代器
+  * 源码实现
+  ```cpp
+  //如果n不等于0 传回n 表示buff_size为用户自定义
+//如果n等于0 表示buff_size使用默认值
+inline size_t _deque_buf_size(size_t n,size_t sz){
+    return n != 0 ? n:(sz < 512 ? size_t(512/sz):size_t(1));
+}
+
+template <class T,size_t Buf_size>
+struct _deque_iterator {
+    typedef T value_type;
+    typedef value_type* pointer;
+    typedef value_type& reference;
+    typedef T** map_pointer;
+    typedef _deque_iterator self;
+    typedef ptrdiff_t difference_type;//两个指针相减的结果的类型为ptrdiff_t
+    
+    pointer cur;//此迭代器所指缓冲区的current元素
+    pointer first;//此迭代器所指缓冲区的first元素
+    pointer last;//此迭代器所指缓冲区的last元素
+    map_pointer node;//node指针指向中控区map的一个指针 这个指针又指向此迭代器所指缓冲区的第一个元素
+    
+    //此迭代器所指缓冲区的size
+    static size_t buffer_size(){
+        return _deque_buf_size(Buf_size, sizeof(T));
+    }
+    
+    //迭代器行进到缓冲区的边缘时 需要切换到下一个缓冲区 会用到set_node这个关键函数
+    void set_node(const map_pointer new_node){
+        node = new_node;
+        first = *new_node;
+        last = first + difference_type(buffer_size());
+    }
+    
+    //deque迭代器几个比较重要的重载函数
+    reference operator*()const{
+        return  *cur;
+    }
+    
+    pointer operator->()const{
+        return &(operator*());
+    }
+    
+    //两个迭代器相减
+    difference_type operator-(const self& x)const{
+        return difference_type(buffer_size()) * (node - x.node -1) + (cur - first) + (x.last -x.cur);
+    }
+    
+    self& operator++(){
+        ++cur;
+        if(cur == last){//如果已经到该缓冲区的最后一个节点 切换至下一个缓冲区
+            set_node(node + 1);
+            cur = first;
+        }
+        return *this;
+    }
+    
+    self& operator--(){
+        if(cur == last){//如果已经到该缓冲区的最后一个节点 切换至前一个缓冲区
+            set_node(node - 1);
+            cur = last;
+        }
+        --cur;
+        return *this;
+    }
+};
+  ```
+  * 中控区map与迭代器以及缓冲区关系图
 
 # 4.deque的构造与内存分配
 
