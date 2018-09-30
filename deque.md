@@ -82,6 +82,12 @@ struct _deque_iterator {
 };
   ```
   * 中控区map与迭代器以及缓冲区关系图
+  ![Image of deque](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/deque_struct.png)
+  
+
+
+
+
 
 # 4.deque的构造与内存分配
 
