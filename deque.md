@@ -86,10 +86,26 @@ struct _deque_iterator {
   
 
 # 4.deque的数据结构
+```cpp
+template <class T,size_t Buf_size>
+class deque {
+public:
+    typedef T value_type;
+    typedef value_type* pointer;
+    typedef size_t size_type;
+    typedef _deque_iterator<T , Buf_size> iterator;
+    typedef pointer* map_pointer;
+protected:
+    iterator start;//第一个节点
+    iterator finsh;//最后一个节点
+    map_pointer map;//中控区map map为一个连续的空间 里面每一个指针指向一个缓冲区
+    size_type map_size;//map中指针的数量
+};
+```
+
+# 5.通过对deque的使用来理解deque的构造与内存分配
 
 
-
-# 5.deque的构造与内存分配
 
 
 
