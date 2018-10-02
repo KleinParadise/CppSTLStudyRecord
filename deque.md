@@ -85,11 +85,11 @@ struct _deque_iterator {
   ![Image of deque](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/deque_struct.png)
   
 
+# 4.deque的数据结构
 
 
 
-
-# 4.deque的构造与内存分配
+# 5.deque的构造与内存分配
 
 
 
