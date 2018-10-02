@@ -117,12 +117,14 @@ protected:
    }
    ```
   - 此时deque在内存的模型大概如下图（假如设置deque缓冲区的为8）
-
+  ![Image of 1](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/deque_1.png)
+  
 2.此时在deque尾端在新增一个元素
   ```cpp
   ideq.push_back(3);//由于最后一个缓冲区还剩1个空间 该插入操作会使deque配置一块新的缓冲区，然后设妥新值，最后改变迭代器finsh的状态
   ```
   - 执行ideq.push_back(3)后deque的内存模型
+  ![Image of 2](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/deque_2.png)
 
 3.在deque前端插入一个新元素
   ```cpp
@@ -130,6 +132,7 @@ protected:
   ideq.push_front(99);
   ```
   - 执行ideq.push_back(3)后deque的内存模型
+  ![Image of 3](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/deque_3.png)
   
 4.在deque前端又插入两个新元素
   ```cpp
@@ -137,6 +140,6 @@ protected:
   ideq.push_front(97);
   ```
   - 执行后的内存模型如下图
-
+  ![Image of 4](https://github.com/KleinParadise/CppSTLStudyRecord/blob/master/deque_4.png)
 
 
