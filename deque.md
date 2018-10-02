@@ -104,8 +104,39 @@ protected:
 ```
 
 # 5.通过对deque的使用来理解deque的构造与内存分配
+ 1.构造deque并添加三个元素
+   ```cpp
+   deque<int> ideq(20,9);//构造deque令其保留20个空间初始值为9
+   //重新设置deque里面元素的值
+   for (int i=0; i<ideq.size(); i++) {
+       ideq[i] = i;
+   }
+   //在deque尾端加三个元素 由于此时最后一个缓冲区还有4个空间 所以该操作不会造成空间的重新配置 直接插入数据
+   for (int i=0; i<3; i++) {
+       ideq.push_back(i);
+   }
+   ```
+  - 此时deque在内存的模型大概如下图（假如设置deque缓冲区的为8）
 
+2.此时在deque尾端在新增一个元素
+  ```cpp
+  ideq.push_back(3);//由于最后一个缓冲区还剩1个空间 该插入操作会使deque配置一块新的缓冲区，然后设妥新值，最后改变迭代器finsh的状态
+  ```
+  - 执行ideq.push_back(3)后deque的内存模型
 
+3.在deque前端插入一个新元素
+  ```cpp
+  //如果第一缓冲区有空间直接插入该新元素 如无无备用空间该操作会使deque配置一块新缓冲区，然后将指向新缓冲区的节点安置在map上,最后调整迭代器start的状态
+  ideq.push_front(99);
+  ```
+  - 执行ideq.push_back(3)后deque的内存模型
+  
+4.在deque前端又插入两个新元素
+  ```cpp
+  ideq.push_front(98);
+  ideq.push_front(97);
+  ```
+  - 执行后的内存模型如下图
 
 
 
