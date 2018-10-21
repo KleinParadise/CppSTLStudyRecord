@@ -127,24 +127,25 @@
       
       
 * int const * const p;有一个简便的办法记忆。从右往左读，遇到p就替换成“p is a ”遇到*就替换成“point to”。
-    - const int p; //常量整数
-    - const int* p; //p is a point to int const.p是一个指向整型常量的指针
-    - int const* p; //p is a point to const int 同上
-    - int * const p;//p is a const point to int.p是一个常量指针，指向整型。
-    - const int * const p;//p is a const point to int const.
-    - int const * const p;//p is a const point to const int 同上p都是常量指针，指向整型常量
-
-* C++中有了malloc / free,为什么还需要 new / delete?  
-  1. malloc与free是C++/C语言的标准库函数，new/delete是C++的运算符。它们都可用于申请动态内存和释放内存。
-  2. 对于非内部数据类型的对象而言，光用maloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象在消亡之前要自动执行析构函数。
-     由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能够把执行构造函数和析构函数的任务强加于malloc/free。
-  3. 因此C++语言需要一个能完成动态内存分配和初始化工作的运算符new，以一个能完成清理与释放内存工作的运算符delete。注意new/delete不是库函数。
-
-
+```cpp
+    const int p; //常量整数
+    const int* p; //p is a point to int const.p是一个指向整型常量的指针
+    int const* p; //p is a point to const int 同上
+    int * const p;//p is a const point to int.p是一个常量指针，指向整型。
+    const int * const p;//p is a const point to int const.
+    int const * const p;//p is a const point to const int 同上p都是常量指针，指向整型常量
+ ```
+ 
 * 什么时候要用虚析构函数
   - 通过基类的指针来删除派生类的对象时，基类的析构函数应该是虚的。否则其删除效果将无法实现。一般情况下，这样的删除只能够删除基类对象，而不能删除子类对       象，形成了删除一半形象，从而千万内存泄漏。
   - 在公有继承中，基类对派生类及其对象的操作，只能影响到那些从基类继承下来的成员。如果想要用基类对非继承成员进行操作，则要把基类的这个操作（函数）定义为     虚函数。那么，析构函数自然也应该如此：如果它想析构子类中的重新定义或新的成员及对象，当然也应该声明为虚的。
   - 如果不需要基类对派生类及对象进行操作，则不能定义虚函数（包括虚析构函数），因为这样会增加内存开销。
+  
+* C++中有了malloc / free,为什么还需要 new / delete?  
+  - malloc与free是C++/C语言的标准库函数，new/delete是C++的运算符。它们都可用于申请动态内存和释放内存。
+  - 对于非内部数据类型的对象而言，光用maloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象在消亡之前要自动执行析构函数。
+     由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能够把执行构造函数和析构函数的任务强加于malloc/free。
+  - 因此C++语言需要一个能完成动态内存分配和初始化工作的运算符new，以一个能完成清理与释放内存工作的运算符delete。注意new/delete不是库函数。
       
 * C和C++的区别？
   - C++在C的基础上增添类
